@@ -1,5 +1,5 @@
 # Profiling polkadot-sdk incremental builds
-We profile https://github.com/paritytech/polkadot-sdk 
+We profile https://github.com/paritytech/polkadot-sdk, the code behind the Polkadot blockchain and core of all Substrate-based chains.w
 
 ## Results
 Our modded compiler is **35% faster than the default compiler**. We shrank **incremental build time from 30 seconds to 19 seconds**. Full timings reports, and an analysis/report are attached.
@@ -22,10 +22,10 @@ polkadot-sdk/polkadot$ SKIP_WASM_BUILD=1 RUSTFLAGS="-C linker=/usr/bin/clang -Zs
 ### 'Modded' custom compiler
 ```bash
 # Full cargo check
-polkadot-sdk/polkadot$ SKIP_WASM_BUILD=1 RUSTFLAGS="-C linker=/usr/bin/clang -Zself-profile -Zself-profile-events=default,args -Zthreads=8 --cfg tokio_unstable" cargo +kaprust check --target-dir target-nightly --timings
+polkadot-sdk/polkadot$ SKIP_WASM_BUILD=1 RUSTFLAGS="-C linker=/usr/bin/clang -Zself-profile -Zself-profile-events=default,args -Zthreads=8 --cfg tokio_unstable" cargo +kaprust check --target-dir target-kap --timings
 # Simulate a code change
 polkadot-sdk/polkadot$ touch ../substrate/primitives/weights/src/lib.rs
 # Incremental cargo check
-polkadot-sdk/polkadot$ SKIP_WASM_BUILD=1 RUSTFLAGS="-C linker=/usr/bin/clang -Zself-profile -Zself-profile-events=default,args -Zthreads=8 --cfg tokio_unstable" cargo +kaprust check --target-dir target-nightly --timings
+polkadot-sdk/polkadot$ SKIP_WASM_BUILD=1 RUSTFLAGS="-C linker=/usr/bin/clang -Zself-profile -Zself-profile-events=default,args -Zthreads=8 --cfg tokio_unstable" cargo +kaprust check --target-dir target-kap --timings
 ```
 
