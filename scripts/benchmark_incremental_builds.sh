@@ -5,7 +5,7 @@
 ## @User please configure these for your project ##
 
 CONTROL_TOOLCHAIN="stable"
-CUSTOM_TOOLCHAIN="kapstable-2024-02-23"
+CUSTOM_TOOLCHAIN="kapstable"
 
 CONTROL_TARGETDIR="target-stable"
 CUSTOM_TARGETDIR="target-kap"
